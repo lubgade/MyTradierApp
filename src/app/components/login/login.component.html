@@ -8,5 +8,10 @@
     <label>Password</label>
     <input type="password" class="form-control" [(ngModel)]="password" name="password">
   </div>
-  <input type="submit" class="btn btn-primary" value="Login">
+  <input type="submit" class="btn btn-primary" value="Login" [disabled]="expired" >
+  <a href="#" (click)="resendConfirmation()" *ngIf="expired" role="button" class="btn btn-success">Resend activation link</a>
+  <div class="reset">
+    <a href="#" (click)="resetPassword()"  role="button" class="btn btn-danger">Forgot Password</a>  
+    <a href="#" (click)="resetUsername()" role="button" class="btn btn-success">Forgot Username</a>
+  </div>
 </form>

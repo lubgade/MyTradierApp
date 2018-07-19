@@ -1,0 +1,49 @@
+
+  
+<div class="container" *ngIf="positions | async; let positions; else loading" >
+  <br><br>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Cost Basis</th>
+            <th>Date_acquired</th>
+            <th>ID</th>
+            <th>Quantity</th>
+            <th>Symbol</th>
+            <th>Ask_Price</th>
+            <th>Current_Value</th>
+            <th>Unrealised_Profit/Loss</th>
+            <th>Volume</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let position of positions | arraysort: 'symbol'" (click)="selectPosition(position)" >
+          <td> {{position.id}} </td>            
+          <td> {{position.cost_basis}} </td>
+          <td> {{position.date_acquired}} </td>
+          <td> {{position.quantity}} </td>
+          <td> {{position.symbol}} </td>
+          <td> {{position.ask_price}} </td>
+          <td> {{position.current_value}} </td>
+          <td> {{position.unrealized_profit_loss}} </td>
+          <td> {{position.volume}} </td>
+          <!-- <app-selected-position [selectedPosition]="position" ></app-selected-position> -->
+        </tr>
+      </table>
+
+</div>
+<ng-template #loading>Loading User Data...</ng-template>
+
+
+
+<app-dialog [(visible)]="showDialog" *ngIf="selectedPosition" >
+
+  <h4>Selected Position:</h4>
+  <label>Current ask_price:</label>
+  <span>{{selectedPosition.ask_price}}</span>
+  <label for="">Current bid_price</label>
+  <span> {{selectedPosition.bid}} </span>
+  <button (click)="showDialog = !showDialog" class="btn btn-primary">Close</button>
+</app-dialog>
+
+<!-- arraysort: 'symbol' -->

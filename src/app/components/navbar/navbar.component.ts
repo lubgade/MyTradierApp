@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
               private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
+    this.authService.confirm = false;
   }
 
   onLogoutClick(){

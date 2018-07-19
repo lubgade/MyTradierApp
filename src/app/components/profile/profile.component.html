@@ -1,7 +1,43 @@
 <div *ngIf="user">
-  <h2 class="page-header">{{user.name}}</h2>
-  <ul class="list-group">
-    <li class="list-group-item">Username: {{user.username}}</li>
-    <li class="list-group-item">Email: {{user.email}}</li>
-  </ul>
+  <div>
+    <h2 class="page-header">{{user.name}}</h2>
+    <ul class="list-group">
+      <li class="list-group-item">Username: {{user.username}}</li>
+      <li class="list-group-item">Email: {{user.email}}</li>
+    </ul>
+  </div>
+  <hr>
+  <div>
+    <h4>Linked accounts</h4>
+    <div class="btn-group" dropdown>
+      <button class="btn btn-secondary dropdown-toggle" id="menu1" type="button" dropdownToggle>Accounts
+          <span class="caret"></span>
+      </button>
+      <div *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="menu1" >
+        <div *ngIf="Accounts" >
+          <ul *ngFor="let a of Accounts">
+            <div class="dropdown-item">{{a}} <a (click)="unlinkAccount(a)" >X</a> </div>
+          </ul>
+        </div>
+        <button class="btn btn-secondary" id="link_account" *ngIf="!linkAccount" (click)="onAddAccount($event)" >Add account</button>
+      </div>
+    </div>
+
+  <div *ngIf="linkAccount" >
+    <h4>Add an account to link</h4>
+    <form #linkAccountForm="ngForm" (submit)="onAccountLink(); linkAccountForm.reset()" method="#">
+      <div class="form-group">
+        <label>Account name</label>
+        <select name="" id="" (change)="onChange($event)" >
+          <option  *ngFor="let account of accounts" [value]="account">{{account}} </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Access Token</label>
+        <input type="text"  class="form-control" required name="accessToken" [(ngModel)]="accessToken">
+      </div>
+      <br>
+      <input type="submit" value="Add" class="btn btn-primary" >
+    </form>
+  </div>
 </div>

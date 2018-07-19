@@ -1,0 +1,39 @@
+<!--<div class="container">
+  <div class="big-div">
+    <div class="row">
+      <form class="form-group">
+        <input class="form-control" type="text" placeholder="search..."/>
+      </form>
+    </div> 
+  </div>
+</div>
+<div class="container">
+  <div class="big-div">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-deck">
+            <div class="card"  >
+              <img class="card-img img-fluid" src="{{account.url}}" alt="tradier" routerLink="/account/{{account.name}}" >
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Select Account</h2>
+      <div class="btn-group" dropdown>
+        <button class="btn btn-secondary dropdown-toggle" id="menu1" type="button" dropdownToggle>Accounts
+            <span class="caret"></span>
+        </button>
+        <div *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="menu1" >
+          <ul *ngFor="let a of accounts" [routerLink]="['/accounts', a]" >
+            <li role="menuitem"><a class="dropdown-item" (click)="selectAccount($event.target.computedName)" >{{a}}</a></li>
+          </ul>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>

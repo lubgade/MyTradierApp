@@ -1,0 +1,44 @@
+<h4>Selected Position:</h4>
+<label for="">Symbol: {{position.symbol}}</label>
+<br>
+<label>Ask_price: {{position.ask_price}}</label>
+<br>
+<label for="">Current bid: {{position.bid}}</label>
+<br>
+<label for="">Current Value: {{position.current_value}}</label>
+<br>
+<label for="">Book Profit Price: {{bp_price}}</label>
+<span>
+  <button class="btn btn-secondary" id="bp_price" (click)="update_price($event)" >Update</button>
+  <input  *ngIf="clicked_bp" type="text" class="" #pricebox (keyup.enter)="onPriceUpdate(pricebox.value)" >  
+</span>
+<br>
+<label for="">Stop loss price: {{sl_price}}</label>
+<span>
+    <button class="btn btn-secondary" id="sl_price" (click)="update_price($event)" >Update</button>
+    <input  *ngIf="clicked_sl" type="text" class="" #pricebox (keyup.enter)="onPriceUpdate(pricebox.value)" >  
+  </span>
+  
+<br><br>
+
+<!-- <div>
+  <form #selPositionForm="ngForm" (submit)="addPrice(); selPositionForm.reset()" >
+    <div class="form-group">
+      <label for="">Stop loss price:</label>
+      <input type="text" class="" name="sl_price" [(ngModel)]="sl_price" >
+    </div>
+    <div class="form-group">
+      <label for="">Book Profit Price:</label>
+      <input type="text" class="" name="bp_price" [(ngModel)]="bp_price" >
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Add" class="btn btn-secondary">
+    </div>
+  </form>
+</div> -->
+
+<div>
+  <button value="back" class="btn btn-secondary" (click)="goBack()" >back</button>
+</div>
+
+
